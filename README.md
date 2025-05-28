@@ -46,9 +46,9 @@ To get started with the code in this repository:
 
 ## 💡 Guidance
 
-- Start with the basics in the `assignments` folder.
-- Try out the projects to apply what you've learned.
-- Check the `notes` folder for tips and resources.
+- Start with the basics in the `classes` folder.
+- Try out the `assignments ` to apply what you've learned.
+- Check the `files` folder for resources.
 
 ## 📬 Feedback
 
