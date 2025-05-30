@@ -1,0 +1,9 @@
+Order ID,Customer Name,Order Date,Product,Quantity,Unit Price,Total Revenue
+1001,John Doe,01/01/2024,Widget A,10.0,25.0,250.0
+1002,Jane Smith,01/02/2024,Widget B,5.0,40.0,200.0
+1003,,2024/01/03',Widget A,,25.0,
+1004,Alice Johnson,04/01/2024,Widget C,3.0,,210.0
+1005,Bob Brown,2024/01/05',Widget B,10.0,40.0,400.0
+1006,John Doe,06/01/2024,Widget A,4.0,25.0,100.0
+1001,John Doe,01/01/2024,Widget A,10.0,25.0,250.0
+1007,Jane Smith,07/01/2024,Widget C,-6.0,70.0,-420.0
