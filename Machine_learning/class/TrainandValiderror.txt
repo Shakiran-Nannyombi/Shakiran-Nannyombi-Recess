@@ -1,0 +1,41 @@
+Training and Validation Loss
+
+These are metrics used to monitor the model's performance and generalization ability.
+
+- The Loss represents the discrepancy between the predicted output and the actual target value.
+
+Training Loss
+- Training Loss or error refers to the error on the data that the model was trained on.
+- Directly affects weight adjustments in the model.
+- Provides insights into how well the model fits the training data.
+
+Common Training Loss Functions
+- Mean Squared Error
+- Cross-Entropy Loss
+
+Validation Loss
+- Validation Loss is the error on unseen data, used to evaluate the model's performance outside the training data set.
+- Helps in assessing the model's generalization.
+- Used as a criterion for early stopping to prevent overtraining.
+
+Relevance of Tracking Both Losses
+- Tracking both training and validation loss helps to monitor overfitting and underfitting.
+- Provides a better understanding of the model's learning progress.
+
+Epoch
+- An epoch is one complete pass through the entire training dataset.
+
+Frameworks: Django, Flask, and TensorFlow
+- Django and Flask are web frameworks.
+- TensorFlow is a machine learning framework.
+
+TensorFlow Properties
+1. It's an open-source library for deep learning.
+2. Flexible and powerful.
+3. Makes building models easier and more reproducible.
+
+Basic Steps in Using TensorFlow
+1. Import libraries.
+2. Build and compile the model.
+3. Fit, predict, and evaluate.
+4. Save and reload the model.

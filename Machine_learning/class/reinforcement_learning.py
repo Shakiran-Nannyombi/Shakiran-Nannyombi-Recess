@@ -60,7 +60,28 @@ while state < positions - 1:
 
 print(f"Reached the goal in {steps} steps.")
 
+#Final Q-table
 print("\nFinal Q-table:")
 print(Q)
  
- 
+ # output
+"""Learned Q-values:
+[[62.17055763 70.18954734]
+ [62.17058285 79.09949815]
+ [70.18950926 88.99944265]
+ [79.09949802 99.99942828]
+ [88.99940541 99.9994176 ]]
+
+Agent's path to the goal:
+Step 1: Moved to position 1
+Step 2: Moved to position 2
+Step 3: Moved to position 3
+Step 4: Moved to position 4
+Reached the goal in 4 steps.
+
+Final Q-table:
+[[62.17055763 70.18954734]
+ [62.17058285 79.09949815]
+ [70.18950926 88.99944265]
+ [79.09949802 99.99942828]
+ [88.99940541 99.9994176 ]]"""
