@@ -1,0 +1,86 @@
+Building a Web Application Using Django
+=======================================
+
+Tips:
+- Build your projects from scratch to avoid losing marks.
+- Create a welcoming landing page with a lovable vibe.
+
+Steps to Create a Django Web App:
+---------------------------------
+1. Create a virtual environment:
+    python -m venv venv
+
+2. Activate the virtual environment:
+    # On Windows:
+    venv\Scripts\activate
+    # On macOS/Linux:
+    source venv/bin/activate
+
+3. Install Django:
+    pip install django
+
+4. Create a Django project (with apps and templates):
+    django-admin startproject kiranAi .
+
+    (The dot at the end puts the generated files into the current folder, e.g., kiranAi or your project folder.)
+
+    Explanation of Default Pages:
+    ----------------------------
+    After running the above command, Django creates a project structure with several default files:
+    - manage.py: A command-line utility for interacting with your project (runserver, migrations, etc.).
+    - kiranAi/ (project folder):
+        - __init__.py: Marks this directory as a Python package.
+        - settings.py: Main settings/configuration for your Django project.
+        - urls.py: URL declarations for your project; routes URLs to views.
+        - asgi.py & wsgi.py: Entry points for ASGI/WGI-compatible web servers to serve your project.
+    When you run the development server for the first time, visiting http://127.0.0.1:8000/ will show the default Django welcome page, indicating your project is set up correctly.
+
+5. Create Django apps as needed:
+    python manage.py startapp appname
+
+    What happens when you run startapp:
+    -----------------------------------
+    - Django creates a new folder named after your app (e.g., appname) with the following structure:
+        appname/
+            __init__.py         # Marks the directory as a Python package
+            admin.py            # Register models for the admin interface
+            apps.py             # App configuration
+            models.py           # Define your database models here
+            tests.py            # Write tests for your app
+            views.py            # Define view functions/classes
+            migrations/         # Database migrations folder
+                __init__.py
+    - You should add your app to the INSTALLED_APPS list in your project's settings.py:
+        INSTALLED_APPS = [
+            # ...
+            'appname',
+        ]
+    - Optionally, create a urls.py file in your app to define app-specific routes.
+
+6. Set up templates and static files for your project:
+    - Create a folder named 'templates' in your app or project directory.
+    - Inside 'templates', create HTML files (e.g., register.html, login.html) for your web pages.
+    - In your app's views.py, render these templates using Django's render() function.
+    - Example:
+        from django.shortcuts import render
+
+        def register(request):
+            return render(request, 'register.html')
+
+    - In settings.py, ensure 'DIRS' in TEMPLATES points to your templates folder if using a project-level templates directory.
+
+    - For static files (CSS, JS, images), create a 'static' folder and configure STATIC_URL and STATICFILES_DIRS in settings.py.
+
+7. Run migrations to set up your database:
+    - Make migrations for your app's models:
+        python manage.py makemigrations
+    - Apply migrations to the database:
+        python manage.py migrate
+
+    - These commands create and update the database tables based on your
+
+Notes:
+------
+- Organize your code for readability and maintainability.
+- Use version control (e.g., Git) for your project.
+
