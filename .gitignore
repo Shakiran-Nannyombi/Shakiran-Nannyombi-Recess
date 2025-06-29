@@ -175,4 +175,6 @@ cython_debug/
 
 Machine_learning/models/first_model.h5
 Machine_learning/models/churn_model.h5
+Machine_learning/models/churn_regression_model.h5
+
 

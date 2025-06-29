@@ -1,16 +1,16 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
 # Load cleaned data
 df = pd.read_csv('../files/Churn_cleaned.csv')
 
-# Use 'Monthly Charges' as the regression target
-X = df.drop('Monthly Charges', axis=1)
-y = df['Monthly Charges']
+# Separate features and target
+X = df.drop('Churn', axis=1)
+y = df['Churn']
 
 # Split into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -20,37 +20,37 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# Build a regression neural network
+# Build a simple neural network
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(32, activation='relu', input_shape=(X_train.shape[1],)),
     tf.keras.layers.Dense(16, activation='relu'),
-    tf.keras.layers.Dense(1)  # No activation for regression
+    tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 
-model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Train the model
 history = model.fit(X_train, y_train, epochs=20, batch_size=32, validation_split=0.2)
 
 # Predict on test set
-y_pred = model.predict(X_test).flatten()
+y_pred = (model.predict(X_test) > 0.5).astype("int32")
 
-# Regression evaluation metrics
-print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
-print("Mean Absolute Error:", mean_absolute_error(y_test, y_pred))
-print("R^2 Score:", r2_score(y_test, y_pred))
+# Evaluation metrics
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("Precision:", precision_score(y_test, y_pred))
+print("Recall:", recall_score(y_test, y_pred))
+print("F1-score:", f1_score(y_test, y_pred))
+print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-# Save the model
-model.save('../models/churn_regression_model.h5')
-
-# Plot training & validation MAE and loss
+# Plot training & validation accuracy and loss
 plt.figure(figsize=(12, 6))
 
-# MAE plot
+# Accuracy plot
 plt.subplot(1, 2, 1)
-plt.plot(history.history['mae'], label='Training MAE')
-plt.plot(history.history['val_mae'], label='Validation MAE')
-plt.title('Training and Validation MAE')
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Training and Validation Accuracy')
 plt.legend()
 
 # Loss plot
@@ -61,7 +61,7 @@ plt.title('Training and Validation Loss')
 plt.legend()
 
 plt.tight_layout()
-plt.savefig('../models/churn_regression_training_history.png')
+plt.savefig('../models/churn_training_history.png')  # Save as image
 plt.show()
 
 # Save the model
