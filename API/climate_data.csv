@@ -1,0 +1,2 @@
+coord,weather,base,main,visibility,wind,clouds,dt,sys,timezone,id,name,cod
+"{'lon': 32.5825, 'lat': 0.3476}","[{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04d'}]",stations,"{'temp': 298.97, 'feels_like': 298.81, 'temp_min': 298.97, 'temp_max': 298.97, 'pressure': 1012, 'humidity': 46, 'sea_level': 1012, 'grnd_level': 885}",10000,"{'speed': 3.19, 'deg': 185, 'gust': 3.64}",{'all': 83},1751461242,"{'country': 'UG', 'sunrise': 1751428161, 'sunset': 1751471865}",10800,443339,Kampala District,200
